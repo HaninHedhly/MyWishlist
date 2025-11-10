@@ -1,0 +1,35 @@
+name: wishlist
+description: "A new Flutter project."
+
+publish_to: 'none' # Prevent publishing to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  shared_preferences: ^2.1.0 # ✅ Pour sauvegarder les utilisateurs sur Web et Mobile
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  # Assets (images, JSON, etc.)
+  # assets:
+  #   - assets/images/
+
+  # Fonts (optionnel)
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+#       - asset: fonts/Schyler-Italic.ttf
