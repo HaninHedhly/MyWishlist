@@ -1,7 +1,7 @@
 name: wishlist
 description: "A new Flutter project."
 
-publish_to: 'none' # Prevent publishing to pub.dev
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -13,7 +13,13 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.8
-  shared_preferences: ^2.1.0 # ✅ Pour sauvegarder les utilisateurs sur Web et Mobile
+  
+  # Pour la connexion / signup
+  shared_preferences: ^2.1.0
+
+  # Pour SQLite
+  sqflite: ^2.3.0
+  path: ^1.9.0
 
 dev_dependencies:
   flutter_test:
@@ -22,6 +28,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+
 
   # Assets (images, JSON, etc.)
   # assets:

@@ -1,7 +1,10 @@
+
+
+
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'signup_page.dart';
 import 'home_page.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,9 +17,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Wishlist App 🌸',
+      title: 'Gestion de Contacts 💜',
       theme: ThemeData(
-        primarySwatch: Colors.pink,
+        primarySwatch: Colors.purple,
       ),
       home: const LoginPage(),
     );
@@ -37,20 +40,20 @@ class _LoginPageState extends State<LoginPage> {
   // Vérifier le login avec SharedPreferences
   Future<void> login() async {
     final prefs = await SharedPreferences.getInstance();
-    String email = emailController.text;
-    String password = passwordController.text;
+    String email = emailController.text.trim();
+    String password = passwordController.text.trim();
 
     String? storedPassword = prefs.getString(email);
 
     if (storedPassword != null && storedPassword == password) {
-      // Login réussi → aller à HomePage
+      // ✅ Login réussi → aller à la page des contacts
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const HomePage()),
+        MaterialPageRoute(builder: (_) => const ContactsHomePage()),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Email ou mot de passe incorrect 🌸')),
+        const SnackBar(content: Text('Email ou mot de passe incorrect 💜')),
       );
     }
   }
@@ -58,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink[50],
+      backgroundColor: Colors.purple[50],
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -66,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               const Text(
-                'Login 🌸',
+                'Connexion 💜',
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
@@ -83,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                 controller: passwordController,
                 obscureText: true,
                 decoration: const InputDecoration(
-                  labelText: 'Password',
+                  labelText: 'Mot de passe',
                   prefixIcon: Icon(Icons.lock),
                   border: OutlineInputBorder(),
                 ),
@@ -91,7 +94,11 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: login,
-                child: const Text('Se connecter 🌸'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.purple,
+                  foregroundColor: Colors.white,
+                ),
+                child: const Text('Se connecter 💜'),
               ),
               const SizedBox(height: 10),
               TextButton(
